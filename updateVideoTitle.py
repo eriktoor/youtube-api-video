@@ -28,12 +28,19 @@ def changeVideoTitle(viewCount, id, c):
     api_version = "v3"
     client_secrets_file = "client_secret.json"
 
-    # Get credentials and create an API client
+
+     # Get credentials and create an API client
     flow = c.flow if c.flow else google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
         client_secrets_file, scopes)
+    c.flow = flow 
+
     credentials = c.credentials if c.credentials else flow.run_console()
+    c.credentials = credentials 
+
     youtube = c.youtube if c.youtube else googleapiclient.discovery.build(
         api_service_name, api_version, credentials=credentials)
+    c.youtube = youtube 
+    
 
     request = youtube.videos().update(
         part="snippet,status,localizations",
