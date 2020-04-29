@@ -43,7 +43,7 @@ def changeVideoTitle(viewCount, id, c):
     
 
     request = youtube.videos().update(
-        part="snippet,status,localizations",
+        part="snippet", #,status        
         body={
           "id": id,
           # "localizations": {
