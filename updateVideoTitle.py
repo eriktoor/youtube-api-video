@@ -1,22 +1,16 @@
 import json
-# -*- coding: utf-8 -*-
-
-# Sample Python code for youtube.videos.update
-# See instructions for running these code samples locally:
-# https://developers.google.com/explorer-help/guides/code_samples#python
-
 import os
-
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
 
 
 def changeVideoTitle(viewCount, id, c):
-    
-    title = "This video has " + str(viewCount) + " views."
-    desc = "At the time that this script is updating the video I have "  +str(viewCount)  + " views on it. \n\nIt runs once every x min so it might miss a view here or there."
-    
+
+    title = "This Video Has " + str(viewCount) + " Views (How It Works)"
+    desc = "This video is about how awesome APIs are. At the time that this script is updating the video has "  +str(viewCount)  + " views.\n\nSOCIAL\n--------------------------------------------------------------------------\nPatreon: https://patreon.com/eriktoor\nInstagram: https://instagram.com/erik_toor\nYoutube (Subscribe): https://www.youtube.com/user/TEDBET622?sub_confirmation=1 \n\nGithub Repo: https://github.com/eriktoor/youtube-api-video"
+
+
     scopes = ["https://www.googleapis.com/auth/youtube.readonly", "https://www.googleapis.com/auth/youtube.force-ssl"]
 
 
@@ -28,8 +22,7 @@ def changeVideoTitle(viewCount, id, c):
     api_version = "v3"
     client_secrets_file = "client_secret.json"
 
-
-     # Get credentials and create an API client
+    # Get credentials and create an API client
     flow = c.flow if c.flow else google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
         client_secrets_file, scopes)
     c.flow = flow 
@@ -40,31 +33,21 @@ def changeVideoTitle(viewCount, id, c):
     youtube = c.youtube if c.youtube else googleapiclient.discovery.build(
         api_service_name, api_version, credentials=credentials)
     c.youtube = youtube 
-    
 
     request = youtube.videos().update(
-        part="snippet", #,status        
+        part="snippet", #,status
         body={
           "id": id,
-          # "localizations": {
-          #   "es": {
-          #     "title": "no hay nada a ver aqui",
-          #     "description": "Esta descripcion es en español."
-          #   }
-          # },
           "snippet": {
             "categoryId": 22,
-            "defaultLanguage": "en",
+            # "defaultLanguage": "en",
             "description": desc,
-            "tags": [
-              "new tags"
-            ],
+            # "tags": [
+            #   "tom scott","tomscott","api","coding","application programming interface","data api"
+            # ],
             "title": title
           },
-          "status": {
-            "privacyStatus": "private"
-          }
         }
     )
     response = request.execute()
- 
+    # print(response)
