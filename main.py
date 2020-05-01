@@ -18,13 +18,13 @@ def main():
     timeout = 720 
     while(c.num < 20,000): 
         id = "7-74A-FKWxo"
-        API_KEY = "YOUR-API-KEY"
+        API_KEY = [YOUR-API-KEY]
         viewCount = int(getViews(id, API_KEY))
         if viewCount != c.viewCount: 
             changeVideoTitle(viewCount, id, c)
             print("Changing viewCount...")
             print("Go to https://www.youtube.com/watch?v=" + str(id) + " and check out the name.")
-            timeout = 720
+            timeout = 480
         else: 
             print("The view count is the same as it was so we are not changing")
             timeout = 240 
