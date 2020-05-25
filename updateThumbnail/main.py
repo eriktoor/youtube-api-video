@@ -64,7 +64,7 @@ def update_video_thumbnail(ID, CREDENTIALS):
     # Get credentials and create an API client
     flow = CREDENTIALS.flow if CREDENTIALS.flow else google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
         client_secrets_file, scopes)
-    CREDENTIALS.flow = CREDENTIALS.flow 
+    CREDENTIALS.flow = flow 
 
     credentials = CREDENTIALS.credentials if CREDENTIALS.credentials else flow.run_console()
     CREDENTIALS.credentials = credentials 
