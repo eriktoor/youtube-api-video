@@ -95,7 +95,7 @@ import time
 def main():
 
     ID = "YDyrTlJ7YBo"
-    API_KEY = "YOUR-THUMBNAIL"  
+    API_KEY = "YOUR-API-KEY"  
 
     CREDENTIALS = credentials()
 
@@ -108,7 +108,6 @@ def main():
             # STEP 2: Create New Thumbnail 
             create_thumbnail(current_views)
             # STEP 3: Update Video Thumbnail
-            ID = "3rgBnmnOOJU"
             update_video_thumbnail(ID, CREDENTIALS)
             print("UPDATING THUMBANIL, go to https://youtube.com/" + ID + " to check it out")
             timeout = 300
