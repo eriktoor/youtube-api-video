@@ -95,7 +95,7 @@ import time
 def main():
 
     ID = "YDyrTlJ7YBo"
-    API_KEY = "AIzaSyAk9IubFYBHTFB6UaSJFlHm0-Afls7ypEg"  
+    API_KEY = "YOUR-THUMBNAIL"  
 
     CREDENTIALS = credentials()
 
